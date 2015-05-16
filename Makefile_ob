@@ -1,0 +1,4 @@
+
+all:
+	g++ -o main camera.cpp CameraCalibration.cpp Marker.cpp MarkerDetector.cpp GeometryTypes.cpp  `pkg-config --cflags --libs opencv` -framework Carbon -framework OpenGL -framework GLUT
+
