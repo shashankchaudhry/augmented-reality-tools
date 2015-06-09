@@ -29,10 +29,7 @@
 
 
 // OPENGL
-// OPENGL
-// OPENGL
-// OPENGL
-// OPENGL
+
 
 #include <GLUT/glut.h>
 #include <pthread.h>
@@ -43,10 +40,6 @@
 #define pi 3.1415926
 
 
-// OPENGL
-// OPENGL
-// OPENGL
-// OPENGL
 // OPENGL
 
 
@@ -222,17 +215,6 @@ void idle()
 int main( int argc, char **argv )
 {
   int w,h;
-
-  // if ( argc == 1 ) {
-  //   // start video capture from camera
-  //   cap = new cv::VideoCapture(0);
-  // } else if ( argc == 2 ) {
-  //   // start video capture from file
-  //   cap = new cv::VideoCapture(argv[1]);
-  // } else {
-  //   fprintf( stderr, "usage: %s [<filename>]\n", argv[0] );
-  //   return 1;
-  // }
 
   cap = new cv::VideoCapture(0);
   //video = new cv::VideoCapture("ball.MOV");
