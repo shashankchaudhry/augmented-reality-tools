@@ -1,16 +1,3 @@
-/*
-*****************************************************************************
-*   MarkerDetector.cpp
-*   Example_MarkerBasedAR
-******************************************************************************
-*   by Khvedchenia Ievgen, 5th Dec 2012
-*   http://computer-vision-talks.com
-******************************************************************************
-*   Ch2 of the book "Mastering OpenCV with Practical Computer Vision Projects"
-*   Copyright Packt Publishing 2012.
-*   http://www.packtpub.com/cool-projects-with-opencv/book
-*****************************************************************************/
-
 ////////////////////////////////////////////////////////////////////
 // Standard includes:
 #include <iostream>
@@ -67,10 +54,6 @@ void MarkerDetector::processFrame(const BGRAVideoFrame& frame)
     }
 }
 
-/* TEMPORARY ADDITIONS:
- *
- */
-
 void MarkerDetector::processFrame(cv::Mat frame)
 {
     std::vector<Marker> markers;
@@ -82,10 +65,6 @@ void MarkerDetector::processFrame(cv::Mat frame)
         m_transformations.push_back(markers[i].transformation);
     }
 }
-
-/* END OF ADDITION
- *
- */
 
 const std::vector<Transformation>& MarkerDetector::getTransformations() const
 {
@@ -127,16 +106,9 @@ bool MarkerDetector::findMarkers(const BGRAVideoFrame& frame, std::vector<Marker
     return false;
 }
 
-/* TEMPORARY ADDITIONS:
- *
- */
 
 bool MarkerDetector::findMarkers(cv::Mat frame, std::vector<Marker>& detectedMarkers)
 {
-    //cv::Mat bgraMat(frame.height, frame.width, CV_8UC4, frame.data, frame.stride);
-	//cv::Mat bgraMat;
-	//bgraMat = cv::imread( frame, 1 );
-	//std::cout<<"Made matrix!"<<endl;
 
 	// Convert the image to grayscale
 	//prepareImage(bgraMat, m_grayscaleImage);
@@ -169,9 +141,6 @@ bool MarkerDetector::findMarkers(cv::Mat frame, std::vector<Marker>& detectedMar
 	return false;
 }
 
-/* END OF ADDITION
- *
- */
 
 void MarkerDetector::prepareImage(const cv::Mat& bgraMat, cv::Mat& grayscale) const
 {
@@ -181,7 +150,6 @@ void MarkerDetector::prepareImage(const cv::Mat& bgraMat, cv::Mat& grayscale) co
 
 void MarkerDetector::performThreshold(const cv::Mat& grayscale, cv::Mat& thresholdImg) const
 {
-    //cv::threshold(grayscale, thresholdImg, 127, 255, cv::THRESH_BINARY_INV);
 
 	
     cv::adaptiveThreshold(grayscale,   // Input image

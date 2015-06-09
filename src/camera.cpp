@@ -13,10 +13,6 @@
 #include <queue>          // std::queue
 
 // OPENGL
-// OPENGL
-// OPENGL
-// OPENGL
-// OPENGL
 
 #include <GLUT/glut.h>
 #include <pthread.h>
@@ -27,10 +23,6 @@
 #define pi 3.1415926
 
 
-// OPENGL
-// OPENGL
-// OPENGL
-// OPENGL
 // OPENGL
 
 
@@ -44,8 +36,6 @@ cv::Mat update_frame(cv::Mat ,cv::Mat ,std::vector<Marker> & );
 pair<float, float> find_velocity(queue<cv::Point>);
 
 
-//OPENGL
-//OPENGL
 //OPENGL
 
 VideoCapture *cap = NULL; // open the default camera
@@ -148,7 +138,6 @@ void display()
     //glutSolidTeapot(0.5);
     if (marker_size > 0){
       glutWireTeapot(0.3);
-
     }
     //glutWireSphere(.3, 100, 100);
     //drawAxes(1.0);
@@ -201,17 +190,6 @@ int main( int argc, char **argv )
 {
   int w,h;
 
-  // if ( argc == 1 ) {
-  //   // start video capture from camera
-  //   cap = new cv::VideoCapture(0);
-  // } else if ( argc == 2 ) {
-  //   // start video capture from file
-  //   cap = new cv::VideoCapture(argv[1]);
-  // } else {
-  //   fprintf( stderr, "usage: %s [<filename>]\n", argv[0] );
-  //   return 1;
-  // }
-
   cap = new cv::VideoCapture(0);
   //video = new cv::VideoCapture("ball.MOV");
 
@@ -259,18 +237,10 @@ pthread_create(&tId, &tAttr, startOCV, NULL);
 
 
 //OPENGL
-//OPENGL
-//OPENGL
-//OPENGL
 
 
 void* startOCV(void* arg) 
-//void startOCV()
-//int main(int argc, char** argv)
 {
-	//string frameName = "/Users/Leech/Dropbox/Project/Cheng's Folder/Marker_Detection/photo2.jpg";
-    //cv::Mat camera_frame = cv::imread(frameName, 1);
-    
 
 	cv::Mat mountain_frame = cv::imread("Mountain.jpg",1);
     //VideoCapture cap(0); // open the default camera
@@ -278,10 +248,6 @@ void* startOCV(void* arg)
 
     if(!video.isOpened())  // check if we succeeded
         exit(0);
-    // if(!cap.isOpened() || !video.isOpened())  // check if we succeeded
-    //     exit(0);
-    
-    //namedWindow("MyWindow",CV_WINDOW_AUTOSIZE); //create a window called "MyVideo"
     
     //get size of the embedded video
     int w = video.get(3);
