@@ -33,8 +33,6 @@ float newRows, newCols;
 
 int main( int argc, char** argv )
 {
-	//string frameName = "/Users/Leech/Dropbox/Project/Cheng's Folder/Marker_Detection/photo2.jpg";
-    //cv::Mat camera_frame = cv::imread(frameName, 1);
 
 	cv::Mat mountain_frame = cv::imread("Mountain.jpg",1);
     VideoCapture cap(0); // open the default camera
@@ -306,52 +304,13 @@ cv::Mat update_frame(cv::Mat camera_frame, cv::Mat dstImg, std::vector<Marker> &
 	    new_w=dstImg.cols;
 
 	cv::Rect rectROI(0,0,new_w,new_h);
-	// ADDED
+	
 	cv::Mat tempMask(cv::Size(newCols,newRows),CV_8UC3,CV_RGB(255,255,255));
 	cv::Mat tempMask2,mask;
 	cv::warpPerspective(tempMask,tempMask2,homography,dSize);
 	// convert mask to 8UC1
 	cv::cvtColor(tempMask2,mask,CV_RGB2GRAY);
-	// ADDED END
-/*
-
-	cv::Mat mask(new_h, new_w, CV_8UC1, cv::Scalar(0));
-
-    Mat white_mask = Mat(vid_h, vid_w, CV_8UC1, cv::Scalar(1));
-    Mat out_mask = Mat(vid_h, vid_w, CV_8UC1, cv::Scalar(0));
-
-    cv::Size dSize(new_w,new_h);
-    cv::warpPerspective(white_mask,out_mask,homography,dSize,   INTER_LINEAR, BORDER_CONSTANT, Scalar(0));
-
-	cv::Point P1,P2,P3,P4;
-
-	P1 = cv::Point(int(markersFound[0].points[0].x),int(markersFound[0].points[0].y));
-	P2 = cv::Point(int(markersFound[0].points[1].x),int(markersFound[0].points[1].y));
-	P3 = cv::Point(int(markersFound[0].points[2].x),int(markersFound[0].points[2].y));
-	P4 = cv::Point(int(markersFound[0].points[3].x),int(markersFound[0].points[3].y));
-  
-    P2 = translate(P1, P2, 300, vid_w);
-    P3 = translate(P4, P3, 300, vid_w);
-
-    P1 = warpPoints(cv::Point2f(0,0), homography);
-    P2 = warpPoints(cv::Point2f(vid_h,0), homography);
-    P3 = warpPoints(cv::Point2f(vid_h,vid_w), homography);
-    P4 = warpPoints(cv::Point2f(0,vid_w), homography);
-    cout << "POINTS" << endl;
-    cout << P1.x << " " << P1.y << endl;
-    cout << P2.x << " " << P2.y << endl;
-    cout << P3.x << " " << P3.y << endl;
-    cout << P4.x << " " << P4.y << endl;
-
-	vector<vector<cv::Point> >  co_ordinates;
-	co_ordinates.push_back(vector<cv::Point>());
-
-	co_ordinates[0].push_back(P1);
-	co_ordinates[0].push_back(P2);
-	co_ordinates[0].push_back(P3);
-	co_ordinates[0].push_back(P4);
-	cv::drawContours( mask,co_ordinates,0, cv::Scalar(255),CV_FILLED, 8 );
-*/
+	
 	cv::Mat srcROI = dstImg(rectROI);
 	cv::Mat dstROI = origImg(rectROI);
 	cv::Mat dst1;
